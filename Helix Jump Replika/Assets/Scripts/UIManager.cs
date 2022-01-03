@@ -21,12 +21,10 @@ public class UIManager : Singleton <UIManager>
     {
         InGame.SetActive(false);
         LevelFail.SetActive(true);
-        Time.timeScale = 0;
     }
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 0;
     }
 
     public void LevelComp()
@@ -34,6 +32,5 @@ public class UIManager : Singleton <UIManager>
         InGame.SetActive(false);
         LevelCompleted.SetActive(true);
         GameManager.Instance.scoreFailText.text = GameManager.Instance.score.ToString();
-        Time.timeScale = 0;
     }
 }

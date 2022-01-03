@@ -14,12 +14,6 @@ public class Ball : MonoBehaviour
         gm = GameObject.FindObjectOfType<GameManager>();
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         rb.AddForce(Vector3.up * jumpForce);
@@ -29,16 +23,17 @@ public class Ball : MonoBehaviour
         string materialName = collision.gameObject.GetComponent<MeshRenderer>().material.name;
         Debug.Log("Materyal Adý : " + materialName);
 
-      
         if(materialName == "Unsafe Color (Instance)")
         {
             //bölüm yeniden baþlayacak
             UIManager.Instance.Levelfail();
+            rb.isKinematic = true ;
         }
         else if(materialName == "Last Ring (Instance)")
         {
             //bir sonraki levela geçecek
             UIManager.Instance.LevelComp();
+            rb.isKinematic = true;
         }
     }
 }
